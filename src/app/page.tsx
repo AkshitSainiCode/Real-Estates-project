@@ -1,93 +1,95 @@
-// app/page.js
+// app/page.tsx
 'use client'
-import { useState } from 'react'
+import { useState, FormEvent, ChangeEvent } from 'react'
 import { useRouter } from 'next/navigation'
 
+interface CityData {
+  name: string
+  image: string
+  alt: string
+}
+
 export default function Home() {
-  const [cityName, setCityName] = useState('')
+  const [cityName, setCityName] = useState<string>('')
   const router = useRouter()
 
-  const handleSearch = (e) => {
+  const handleSearch = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (cityName.trim()) {
       router.push(`/city/${cityName.toLowerCase()}`)
     }
   }
 
-  const popularCitiesData = [
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setCityName(e.target.value)
+  }
+
+  const popularCitiesData: CityData[] = [
     { 
       name: 'Ghaziabad',
       image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=400&h=250&fit=crop&crop=center',
-      alt: 'Ghaziabad cityscape',
-      // projects: '200+'
+      alt: 'Ghaziabad cityscape'
     },
     { 
       name: 'Noida',
       image: 'https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=400&h=250&fit=crop&crop=center',
-      alt: 'Noida modern buildings',
-      // projects: '350+'
+      alt: 'Noida modern buildings'
     },
     { 
       name: 'Delhi',
       image: 'https://images.unsplash.com/photo-1587474260584-136574528ed5?w=400&h=250&fit=crop&crop=center',
-      alt: 'Delhi India Gate',
-      // projects: '480+'
+      alt: 'Delhi India Gate'
     },
     { 
       name: 'Bangalore',
       image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=250&fit=crop&crop=center',
-      alt: 'Bangalore IT city skyline',
-      // projects: '420+'
+      alt: 'Bangalore IT city skyline'
     },
     { 
       name: 'Greater Noida',
       image: 'https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=400&h=250&fit=crop&crop=center',
-      alt: 'Greater Noida expressway',
-      // projects: '280+'
+      alt: 'Greater Noida expressway'
     },
     { 
       name: 'Pune',
       image: 'https://images.unsplash.com/photo-1595658658481-d53d3f999875?w=400&h=250&fit=crop&crop=center',
-      alt: 'Pune cityscape',
-      // projects: '320+'
+      alt: 'Pune cityscape'
     },
     { 
       name: 'Hyderabad',
       image: 'https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcQdvsEoezftVEY2wXA7K9c0OQ1YxgwMZXYeD9GSo6QuwyQX1wiUZes-axsjCF3b7lnCdkCykyVa4XI7FoxDkLVRezKfPyfXSSS9xT0Q3A',
-      alt: 'Hyderabad skyline with Charminar',
-      // projects: '450+'
+      alt: 'Hyderabad skyline with Charminar'
     },
     { 
       name: 'Gurugram',
       image: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=400&h=250&fit=crop&crop=center',
-      alt: 'Gurugram modern skyline',
-      // projects: '380+'
+      alt: 'Gurugram modern skyline'
     },
     {
       name: 'Chandigarh',
-      image: 'https://upload.wikimedia.org/wikipedia/commons/1/1a/Palace_of_Assembly_Chandigarh_2006.jpg',
-      alt: 'Chandigarh planned city',
-      // projects: '150+'
+      image: 'https://lh3.googleusercontent.com/gps-cs-s/AC9h4nopt8GM86UygWWVcUzb_0g7pAPOQFcs-y0YcNYSNLBiIAyzmfAqQffR7-nTlAs358Bodu2uAHlI2gEnprMQLdmOZecwofOVgXXI4_zbHcfKuMoBRk7w0fgxR-tXHBtckG_DtJE=w675-h390-n-k-no',
+      alt: 'Chandigarh planned city'
     },
     { 
       name: 'Chennai',
       image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=400&h=250&fit=crop&crop=center',
-      alt: 'Chennai Marina Beach and skyline',
-      // projects: '340+'
+      alt: 'Chennai Marina Beach and skyline'
     },
     { 
       name: 'Mumbai',
       image: 'https://images.unsplash.com/photo-1566552881560-0be862a7c445?w=400&h=250&fit=crop&crop=center',
-      alt: 'Mumbai Marine Drive',
-      // projects: '520+'
+      alt: 'Mumbai Marine Drive'
     },
     { 
       name: 'Kolkata',
       image: 'https://images.unsplash.com/photo-1558431382-27e303142255?w=400&h=250&fit=crop&crop=center',
-      alt: 'Kolkata Victoria Memorial',
-      // projects: '250+'
+      alt: 'Kolkata Victoria Memorial'
     }
   ]
+
+  const handleCityClick = (cityName: string) => {
+    router.push(`/city/${cityName.toLowerCase()}`)
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -111,7 +113,7 @@ export default function Home() {
                 <input
                   type="text"
                   value={cityName}
-                  onChange={(e) => setCityName(e.target.value)}
+                  onChange={handleInputChange}
                   placeholder="Enter city name (e.g., Ghaziabad, Noida, Delhi, Bangalore)"
                   className="w-full pl-12 pr-4 py-4 text-lg border-none focus:outline-none text-gray-700 placeholder-gray-400 rounded-l-lg sm:rounded-r-none rounded-r-lg"
                 />
@@ -131,7 +133,7 @@ export default function Home() {
               {popularCitiesData.map((city) => (
                 <div
                   key={city.name}
-                  onClick={() => router.push(`/city/${city.name.toLowerCase()}`)}
+                  onClick={() => handleCityClick(city.name)}
                   className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-200 cursor-pointer hover:shadow-lg transition-all duration-300 group transform hover:-translate-y-1"
                 >
                   {/* City Image */}
@@ -153,9 +155,12 @@ export default function Home() {
                         <h3 className="text-lg font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors duration-200">
                           {city.name}
                         </h3>
-                        {/* <p className="text-gray-500 text-sm">
-                          {city.projects} active projects
-                        </p> */}
+                      </div>
+                      <div className="text-blue-500 group-hover:text-blue-600 group-hover:translate-x-1 transition-all duration-200">
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
                       </div>
                     </div>
                   </div>
@@ -163,22 +168,6 @@ export default function Home() {
               ))}
             </div>
           </div>
-
-          {/* Show More Cities Button */}
-          {/* <div className="text-center mt-12">
-            <button 
-              onClick={() => {
-                // You can implement show more functionality here
-                console.log('Show more cities clicked')
-              }}
-              className="inline-flex items-center px-6 py-3 bg-white border-2 border-blue-600 text-blue-600 font-semibold rounded-lg hover:bg-blue-600 hover:text-white transition-all duration-200"
-            >
-              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-              </svg>
-              Explore All Cities
-            </button>
-          </div> */}
         </div>
       </div>
     </div>
