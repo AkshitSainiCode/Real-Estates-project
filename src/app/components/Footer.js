@@ -1,3 +1,4 @@
+// components/Footer.js - Fixed Version
 import Link from "next/link"
 
 export default function Footer() {
@@ -10,7 +11,7 @@ export default function Footer() {
           <div className="space-y-3">
             <h3 className="font-semibold text-gray-800 text-base">About Magicbricks</h3>
             <p className="leading-relaxed">
-              Magicbricks is India's leading platform connecting property buyers
+              Magicbricks is India&apos;s leading platform connecting property buyers
               and sellers with trusted listings across cities in real estate.
             </p>
           </div>

@@ -1,4 +1,4 @@
-// components/Header.js
+// components/Header.js - Fixed Version
 'use client'
 import Link from 'next/link'
 import { useState } from 'react'
@@ -6,7 +6,6 @@ import { useRouter } from 'next/navigation'
 
 export default function Header() {
   const [city, setCity] = useState('Ghaziabad')
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeMenu, setActiveMenu] = useState(null)
   const router = useRouter()
 
@@ -207,7 +206,6 @@ export default function Header() {
                   )}
                 </div>
               ))}
-              {/* <Link href="/help" className="text-white hover:text-gray-200 font-medium">Help</Link> */}
             </nav>
 
             <button
