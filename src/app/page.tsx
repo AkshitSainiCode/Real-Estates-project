@@ -46,7 +46,7 @@ export default function Home() {
       alt: 'Bangalore IT city skyline'
     },
     { 
-      name: 'Greater Noida',
+      name: 'GreaterNoida',
       image: 'https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=400&h=250&fit=crop&crop=center',
       alt: 'Greater Noida expressway'
     },
@@ -66,10 +66,10 @@ export default function Home() {
       alt: 'Gurugram modern skyline'
     },
     {
-      name: 'Chandigarh',
-      image: 'https://lh3.googleusercontent.com/gps-cs-s/AC9h4nopt8GM86UygWWVcUzb_0g7pAPOQFcs-y0YcNYSNLBiIAyzmfAqQffR7-nTlAs358Bodu2uAHlI2gEnprMQLdmOZecwofOVgXXI4_zbHcfKuMoBRk7w0fgxR-tXHBtckG_DtJE=w675-h390-n-k-no',
-      alt: 'Chandigarh planned city'
-    },
+  name: 'Chandigarh',
+  image: 'https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcT0KDZ0uyzJsrPzQnucvZvRalAFDY0X7P1zXzum9w9UXSB7iG51ewAezn47fMaEKeNQxdtNuMzttJDXsgiLV1rjV84rE-SP-PhFH8MbLQ',
+  alt: 'Chandigarh planned city'
+},
     { 
       name: 'Chennai',
       image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=400&h=250&fit=crop&crop=center',

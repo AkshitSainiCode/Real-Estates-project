@@ -613,7 +613,7 @@ const mockProjects = {
       image: 'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?ixlib=rb-4.0.3'
     }
   ],
-  greaternoida: [
+  GreaterNoida: [
     {
       id: 'greaternoida_1',
       name: 'Gaur Yamuna City',
